@@ -1,32 +1,56 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div style="display: flex; flex-direction: column; align-items: center; text-align: center; max-width: 46rem; margin: 0 auto;">
+<div style="max-width: 52rem; margin: 0 auto; display: flex; flex-direction: column; gap: 4rem;">
     
-    <!-- Etiqueta de Enfoque Profesional -->
-    <span style="display: inline-block; padding: 0.375rem 0.875rem; border-radius: 9999px; background-color: #0f172a; border: 1px solid rgba(34, 211, 238, 0.2); font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: #22d3ee; margin-bottom: 2rem;">
-        Desarrollador Backend & Full-Stack • Buscando Nuevos Retos
-    </span>
+    <!-- Pitch Profesional de Entrada -->
+    <div style="display: flex; flex-direction: column; align-items: center; text-align: center; max-width: 46rem; margin: 0 auto;">
+        <span style="display: inline-block; padding: 0.375rem 0.875rem; border-radius: 9999px; background-color: #0f172a; border: 1px solid rgba(34, 211, 238, 0.2); font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: #22d3ee; margin-bottom: 2rem;">
+            Backend Engineer & Full-Stack • Buscando Nuevos Retos
+        </span>
 
-    <!-- Titular de Atracción de Empleo -->
-    <h1 style="font-size: clamp(2.3rem, 4.5vw, 3.8rem); font-weight: 850; line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 1.5rem; color: #ffffff;">
-        Construyo software escalable con <br>
-        <span style="background: linear-gradient(to right, #22d3ee, #3b82f6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; color: #22d3ee;">Arquitectura Propia</span>
-    </h1>
+        <h1 style="font-size: clamp(2.3rem, 4.5vw, 3.8rem); font-weight: 850; line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 1.5rem; color: #ffffff;">
+            Construyo software escalable con <br>
+            <span style="background: linear-gradient(to right, #22d3ee, #3b82f6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; color: #22d3ee;">Arquitectura Propia</span>
+        </h1>
 
-    <!-- Pitch Profesional Enfocado a Reclutadores -->
-    <p style="font-size: clamp(1.05rem, 1.8vw, 1.2rem); color: #94a3b8; line-height: 1.6; font-weight: 300; margin-bottom: 3rem;">
-        Hola, soy <strong style="color: #ffffff; font-weight: 600;">Jorge</strong>. Este portafolio fue diseñado, estructurado y programado desde cero bajo una arquitectura modular **MVC con Flask (Python)**. Demuestro mi capacidad para desplegar soluciones técnicas eficientes, limpias y listas para entornos de producción.
-    </p>
+        <p style="font-size: clamp(1.05rem, 1.8vw, 1.2rem); color: #94a3b8; line-height: 1.6; font-weight: 300; margin-bottom: 2rem;">
+            Hola, soy <strong style="color: #ffffff; font-weight: 600;">Jorge</strong>. Este portafolio fue diseñado, estructurado y programado desde cero bajo una arquitectura modular **MVC con Flask (Python)**. Demuestro mi capacidad para desplegar soluciones técnicas eficientes, limpias y listas para entornos de producción.
+        </p>
 
-    <!-- Llamados a la Acción Estratégicos -->
-    <div style="display: flex; gap: 1rem; justify-content: center; width: 100%; flex-wrap: wrap;">
-        <a href="/proyectos" style="display: inline-block; background-color: #22d3ee; color: #020617; font-weight: 700; font-size: 0.95rem; padding: 1rem 2rem; border-radius: 0.75rem; text-decoration: none; box-shadow: 0 10px 15px -3px rgba(34, 211, 238, 0.25);">
-            Ver Código y Proyectos
-        </a>
-        <a href="/contacto" style="display: inline-block; background-color: #0f172a; color: #cbd5e1; border: 1px solid #334155; font-weight: 500; font-size: 0.95rem; padding: 1rem 2rem; border-radius: 0.75rem; text-decoration: none;">
-            Contactar para Entrevista
-        </a>
+        <div style="display: flex; gap: 1rem; justify-content: center; width: 100%; flex-wrap: wrap;">
+            <a href="/proyectos" style="display: inline-block; background-color: #22d3ee; color: #020617; font-weight: 700; font-size: 0.95rem; padding: 1rem 2rem; border-radius: 0.75rem; text-decoration: none; box-shadow: 0 10px 15px -3px rgba(34, 211, 238, 0.25);">
+                Ver Código y Proyectos
+            </a>
+            <a href="/contacto" style="display: inline-block; background-color: #0f172a; color: #cbd5e1; border: 1px solid #334155; font-weight: 500; font-size: 0.95rem; padding: 1rem 2rem; border-radius: 0.75rem; text-decoration: none;">
+                Contactar para Entrevista
+            </a>
+        </div>
+    </div>
+
+    <!-- SECCIÓN DE CONOCIMIENTOS (DURAS Y BLANDAS) -->
+    <div style="border-top: 1px solid #1e293b; padding-top: 3rem;">
+        <h2 style="font-size: 1.75rem; font-weight: 800; color: #ffffff; text-align: center; margin-bottom: 2.5rem;">
+            Stack Técnico & <span style="color: #22d3ee;">Competencias</span>
+        </h2>
+        
+        <!-- Renderizado Dinámico desde el Modelo -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem;">
+            {% for categoria, items in habilidades.items() %}
+            <div style="background-color: #0f172a; border: 1px solid #1e293b; border-radius: 0.75rem; padding: 1.5rem;">
+                <h3 style="font-size: 1rem; font-weight: 700; color: #ffffff; margin-bottom: 1rem; border-left: 3px solid #22d3ee; padding-left: 0.5rem;">
+                    {{ categoria }}
+                </h3>
+                <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.5rem; padding: 0; margin: 0;">
+                    {% for item in items %}
+                    <li style="font-size: 0.875rem; color: #94a3b8; display: flex; align-items: center; gap: 0.5rem;">
+                        <span style="color: #22d3ee;">✔</span> {{ item }}
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endfor %}
+        </div>
     </div>
 
 </div>

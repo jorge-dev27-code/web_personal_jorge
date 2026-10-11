@@ -8,7 +8,6 @@ class Proyecto:
         self.enlace = enlace
 
 def obtener_proyectos():
-    # Aquí simulamos una consulta a base de datos
     return [
         Proyecto(
             titulo="E-Commerce API", 
@@ -26,3 +25,23 @@ def obtener_proyectos():
             tecnologia="Python / Pandas / SKLearn"
         )
     ]
+
+def obtener_perfil():
+    return {
+        "nombre_completo": "Jorge Luis Saenz Bracamonte",
+        "profesion": "Desarrollador Backend & Full-Stack Python",
+        "rut": "287914776",
+        "telefono": "9 2382 7819",
+        "whatsapp": "+56923827819",
+        "correo": "jorgeluissaenzbracamonte@gmail.com",
+        "direccion": "La Alameda, Santiago Centro, Región Metropolitana",
+        "github": "https://github.com"
+    }
+
+def obtener_habilidades():
+    return {
+        "Análisis y Diseño": ["Análisis de Requerimientos", "Arquitectura MVC", "Diseño de Sistemas Escalables", "Metodologías Ágiles"],
+        "Lenguajes de Programación": ["Python", "PHP", "Java", "JavaScript"],
+        "Bases de Datos": ["PostgreSQL", "MySQL", "SQLite", "Optimización de Consultas SQL"],
+        "Administración y Redes": ["Administración de Servidores Linux (Debian/Ubuntu)", "Configuración de Redes", "Seguridad de Redes", "Despliegue en la Nube (Render/VPS)"]
+    }

@@ -1,38 +1,66 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div style="max-width: 32rem; margin: 0 auto; width: 100%;">
-    <div style="text-align: center; margin-bottom: 2.5rem;">
-        <h2 style="font-size: 2.25rem; font-weight: 800; color: #ffffff; margin-bottom: 0.5rem;">
-            ¿Iniciamos una <span style="color: #22d3ee;">Propuesta</span>?
-        </h2>
-        <p style="color: #94a3b8; font-size: 1rem; font-weight: 300;">
-            Completa los detalles y coordinemos una llamada técnica.
-        </p>
+<div style="max-width: 60rem; margin: 0 auto; width: 100%; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 3rem; align-items: start;">
+    
+    <!-- TARJETA DE INFORMACIÓN PERSONAL (VISTA ACTUALIZADA) -->
+    <div style="background-color: #0f172a; border: 1px solid #1e293b; border-radius: 1rem; padding: 2.5rem; display: flex; flex-direction: column; gap: 1.5rem;">
+        <div>
+            <h3 style="font-size: 1.4rem; font-weight: 800; color: #ffffff; margin-bottom: 0.25rem;">{{ perfil.nombre_completo }}</h3>
+            <p style="color: #22d3ee; font-size: 0.9rem; font-weight: 600;">{{ perfil.profesion }}</p>
+        </div>
+        
+        <hr style="border: 0; border-top: 1px solid #1e293b;">
+        
+        <div style="display: flex; flex-direction: column; gap: 1rem; font-size: 0.95rem; color: #94a3b8; font-weight: 300;">
+            <p><strong style="color: #ffffff; font-weight: 500;">📍 Dirección:</strong> {{ perfil.direccion }}</p>
+            <p><strong style="color: #ffffff; font-weight: 500;">🪪 RUT/ID:</strong> {{ perfil.rut }}</p>
+            <p><strong style="color: #ffffff; font-weight: 500;">📞 Teléfono:</strong> {{ perfil.telefono }}</p>
+            <p><strong style="color: #ffffff; font-weight: 500;">✉️ Correo:</strong> {{ perfil.correo }}</p>
+        </div>
+
+        <hr style="border: 0; border-top: 1px solid #1e293b;">
+
+        <!-- BOTÓN DE CONTACTO DIRECTO POR WHATSAPP -->
+        <a href="https://wa.me{{ perfil.whatsapp }}" target="_blank" style="display: block; text-align: center; background-color: #25d366; color: #ffffff; font-weight: 700; padding: 0.75rem; border-radius: 0.5rem; text-decoration: none; font-size: 0.95rem; transition: background-color 0.2s;">
+            💬 Hablemos por WhatsApp
+        </a>
+
+        <div style="display: flex; gap: 1rem; justify-content: center; margin-top: 0.5rem;">
+            <a href="{{ perfil.github }}" target="_blank" style="color: #22d3ee; font-size: 0.85rem; font-weight: 600; text-decoration: none;">GitHub Profile &rarr;</a>
+        </div>
     </div>
 
-    {% if exito %}
-    <div style="background-color: rgba(20, 184, 166, 0.1); border: 1px solid #14b8a6; color: #14b8a6; padding: 1rem; border-radius: 0.75rem; margin-bottom: 1.5rem; font-size: 0.9rem; text-align: center;">
-        {{ exito }}
-    </div>
-    {% endif %}
+    <!-- FORMULARIO DE CONTACTO -->
+    <div>
+        <div style="margin-bottom: 1.5rem;">
+            <h2 style="font-size: 2rem; font-weight: 800; color: #ffffff; margin-bottom: 0.5rem;">¿Hablemos?</h2>
+            <p style="color: #94a3b8; font-size: 0.95rem; font-weight: 300;">Envíame una propuesta directa de empleo o proyecto.</p>
+        </div>
 
-    <form action="/contacto" method="POST" style="background-color: #0f172a; border: 1px solid #1e293b; border-radius: 1rem; padding: 2rem; display: flex; flex-direction: column; gap: 1.25rem;">
-        <div>
-            <label style="display: block; font-size: 0.85rem; font-weight: 600; color: #94a3b8; margin-bottom: 0.5rem;" for="nombre">Nombre / Empresa</label>
-            <input type="text" id="nombre" name="nombre" required style="width: 100%; background-color: #020617; border: 1px solid #1e293b; border-radius: 0.5rem; padding: 0.75rem 1rem; color: #ffffff; font-size: 0.95rem; outline: none;">
+        {% if exito %}
+        <div style="background-color: rgba(20, 184, 166, 0.1); border: 1px solid #14b8a6; color: #14b8a6; padding: 1rem; border-radius: 0.75rem; margin-bottom: 1.5rem; font-size: 0.9rem;">
+            {{ exito }}
         </div>
-        <div>
-            <label style="display: block; font-size: 0.85rem; font-weight: 600; color: #94a3b8; margin-bottom: 0.5rem;" for="correo">Correo de Contacto</label>
-            <input type="email" id="correo" name="correo" required style="width: 100%; background-color: #020617; border: 1px solid #1e293b; border-radius: 0.5rem; padding: 0.75rem 1rem; color: #ffffff; font-size: 0.95rem; outline: none;">
-        </div>
-        <div>
-            <label style="display: block; font-size: 0.85rem; font-weight: 600; color: #94a3b8; margin-bottom: 0.5rem;" for="mensaje">Propuesta de empleo o proyecto</label>
-            <textarea id="mensaje" name="mensaje" rows="4" required style="width: 100%; background-color: #020617; border: 1px solid #1e293b; border-radius: 0.5rem; padding: 0.75rem 1rem; color: #ffffff; font-size: 0.95rem; outline: none; resize: none;"></textarea>
-        </div>
-        <button type="submit" style="width: 100%; background-color: #22d3ee; color: #020617; font-weight: 700; padding: 0.85rem; border-radius: 0.5rem; border: none; font-size: 0.95rem; cursor: pointer;">
-            Enviar Propuesta
-        </button>
-    </form>
+        {% endif %}
+
+        <form action="/contacto" method="POST" style="background-color: #0f172a; border: 1px solid #1e293b; border-radius: 1rem; padding: 2rem; display: flex; flex-direction: column; gap: 1.25rem;">
+            <div>
+                <label style="display: block; font-size: 0.85rem; font-weight: 600; color: #94a3b8; margin-bottom: 0.5rem;" for="nombre">Nombre / Empresa</label>
+                <input type="text" id="nombre" name="nombre" required style="width: 100%; background-color: #020617; border: 1px solid #1e293b; border-radius: 0.5rem; padding: 0.75rem 1rem; color: #ffffff; outline: none;">
+            </div>
+            <div>
+                <label style="display: block; font-size: 0.85rem; font-weight: 600; color: #94a3b8; margin-bottom: 0.5rem;" for="correo">Correo de Contacto</label>
+                <input type="email" id="correo" name="correo" required style="width: 100%; background-color: #020617; border: 1px solid #1e293b; border-radius: 0.5rem; padding: 0.75rem 1rem; color: #ffffff; outline: none;">
+            </div>
+            <div>
+                <label style="display: block; font-size: 0.85rem; font-weight: 600; color: #94a3b8; margin-bottom: 0.5rem;" for="mensaje">Mensaje</label>
+                <textarea id="mensaje" name="mensaje" rows="4" required style="width: 100%; background-color: #020617; border: 1px solid #1e293b; border-radius: 0.5rem; padding: 0.75rem 1rem; color: #ffffff; outline: none; resize: none;"></textarea>
+            </div>
+            <button type="submit" style="width: 100%; background-color: #22d3ee; color: #020617; font-weight: 700; padding: 0.85rem; border-radius: 0.5rem; border: none; font-size: 0.95rem; cursor: pointer;">
+                Enviar Mensaje
+            </button>
+        </form>
+    </div>
 </div>
 {% endblock %}
