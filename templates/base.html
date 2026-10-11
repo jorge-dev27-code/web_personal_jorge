@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jorge | Portafolio</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/tailwind.css') }}">
+    <style>
+        /* Ajustes globales de depuración estructural */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            background-color: #020617; 
+            color: #f8fafc; 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            min-h: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            overflow-x: hidden;
+        }
+        /* Menú de navegación perfectamente alineado */
+        .nav-container {
+            background-color: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid #1e293b;
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .nav-logo {
+            font-size: 1.25rem;
+            font-weight: 900;
+            letter-spacing: 0.05em;
+            color: #22d3ee;
+            text-decoration: none;
+        }
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+        .nav-item {
+            color: #94a3b8;
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .nav-item:hover { color: #22d3ee; }
+        
+        /* Contenedor central simétrico */
+        .main-content {
+            max-width: 64rem;
+            width: 100%;
+            margin: 0 auto;
+            padding: 4rem 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .footer-container {
+            background-color: #020617;
+            text-align: center;
+            padding: 1.5rem;
+            font-size: 0.75rem;
+            color: #64748b;
+            border-t: 1px solid #1e293b;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="nav-container">
+        <a href="/" class="nav-logo">JORGE.DEV</a>
+        <div class="nav-links">
+            <a href="/" class="nav-item">Inicio</a>
+            <a href="/proyectos" class="nav-item">Proyectos</a>
+            <a href="/contacto" class="nav-item">Contacto</a>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer class="footer-container">
+        <p>Construido por Jorge &copy; 2026. Arquitectura MVC con Flask.</p>
+    </footer>
+
+</body>
+</html>
